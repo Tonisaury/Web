@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        #countdown {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+
+    <p><a href="https://www.google.com/maps/" target="_blank">Visit Google Maps</a></p>
+
+    <p><img src="https://your-image-url.com" alt="Your image" width="300"></p>
+
+    <div id="countdown">00:00:00</div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date("2023-04-06T21:00:00"); // Set your target date here
+            const now = new Date();
+            const timeRemaining = targetDate - now;
+
+            if (timeRemaining > 0) {
+                const seconds = Math.floor((timeRemaining / 1000) % 60);
+                const minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
+                const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+
+                document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                document.getElementById("countdown").innerHTML = "00:00:00";
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
